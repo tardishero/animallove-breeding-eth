@@ -53,24 +53,30 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="w-full h-[80px] flex justify-center px-[100px] fixed z-[9999] py-3 items-center">
+    <header className="w-full h-[80px] flex justify-between lg:px-[100px] md:px-[40px] fixed z-[9999] py-3 items-center px-4">
       <Head>
-        <link rel="icon" href="/logoIMG.png" />
+        <link rel="icon" href="/img/logo.png" />
       </Head>
-      <div className="flex items-center h-full px-10 py-5 text-white border-[1px] border-gray-400 rounded-lg text-whitebg-white backdrop-blur-sm bg-opacity-10 bg-white">
-        <p className="text-3xl font-bold text-white">AnimalLove Breeding</p>
-      </div>
-      {/* <Link href={`/`} passHref>
-        <div className="hidden cursor-pointer logo lg:block">
+      <Link href={`/`} passHref>
+        <div className="bg-white cursor-pointer backdrop-blur-sm bg-opacity-10 border-[1px] rounded-lg border-gray-400">
           <img
-            src="/logoIMG.png"
-            className="object-cover object-center w-[80px] h-[80px] p-2"
-            alt=""
+            src="/img/logo.png"
+            className="object-cover object-center w-[55px] h-[55px] p-2"
+            alt="logo"
           />
         </div>
-      </Link> */}
+      </Link>
+      <div
+        className="items-center h-full px-4 py-5 text-white border-[1px] border-gray-400 rounded-lg text-whitebg-white backdrop-blur-sm bg-opacity-10 bg-white hidden md:flex
+      justify-between gap-10"
+      >
+        <p className="text-xl font-bold text-white">AnimalLove Breeding</p>
+        <button className="px-4 py-2 text-black transition-all duration-300 bg-white rounded-md hover:bg-gray-300">
+          Breeding List
+        </button>
+      </div>
 
-      <div className="absolute flex items-center right-10">
+      <div className="flex items-center">
         {/* <Link href={"https://doodlebunnyflr.live/mint"} passHref>
           <li
             className={`text-[1.5rem] hover:text-white duration-300 transition-all cursor-pointer gradient_link ${
