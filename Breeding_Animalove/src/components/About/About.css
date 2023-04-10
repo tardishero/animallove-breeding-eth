@@ -1,0 +1,233 @@
+#about {
+  padding-top: 2%;
+  padding-bottom: 3%;
+  min-height: 1080px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/homeBackground.png');
+  margin: 0px !important;
+}
+
+.about-row {
+  margin: 0px !important;
+  overflow-y: auto;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.wrapper {
+  margin: 20px;
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.tokenGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 300px;
+  gap: 20px;
+  color: red;
+  max-height: 400px;
+  overflow: auto;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.AAinfoPanel {
+  background-color: rgb(34, 33, 33) !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 500px;
+  border-radius: 20px;
+  border-color: white;
+  box-shadow: rgb(25 19 38 / 70%) 0px 8px 12px -8px, rgb(25 19 38 / 5%) 0px 1px 1px;
+  padding: 10px;
+  background-image: url("../../assets/AA_box.jpg");
+  background-size: cover;
+}
+
+.PPinfoPanel {
+  background-color: rgb(34, 33, 33) !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 500px;
+  border-radius: 20px;
+  box-shadow: rgb(25 19 38 / 70%) 0px 8px 12px -8px, rgb(25 19 38 / 5%) 0px 1px 1px;
+  padding: 10px;
+  background-image: url("../../assets/PP_box.jpg");
+  background-size: cover;
+}
+
+.IntravelinfoPanel {
+  background-color: rgb(34, 33, 33) !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 500px;
+  border-radius: 20px;
+  box-shadow: rgb(25 19 38 / 70%) 0px 8px 12px -8px, rgb(25 19 38 / 5%) 0px 1px 1px;
+  padding: 10px;
+  background-image: url("../../assets/intravel_box.jpg");
+  background-size: cover;
+}
+
+.top-title,
+.middle-title {
+  font-size: 3.222rem;
+  line-height: 3.056rem;
+  text-align: center;
+  font-family: "termina", sans-serif !important;
+  font-weight: 500 !important;
+  font-style: normal;
+  letter-spacing: 0.056rem;
+  color: rgb(255, 255, 255);
+}
+
+.top-title>img {
+  width: 600px;
+}
+
+.stakingBtnContainer {
+  width: 100%;
+}
+
+.stakingBtn {
+  justify-content: center;
+}
+
+.stakingBtn>a {
+  color: rgb(221, 219, 219);
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 20px;
+  background: rgb(100, 31, 169);
+  margin: 30px !important;
+}
+
+.stakingBtn>a:hover {
+  transition: 0.3s;
+  transform: scale(0.3);
+  color: rgb(221, 219, 219);
+  background: rgb(115, 61, 168);
+}
+
+.depositBtn,
+.withdrawBtn,
+.btn-connect {
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: white;
+  border: none;
+  height: 80px;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 15px;
+  background-position: 50% 50%;
+  margin-bottom: 30px;
+  background-color: transparent;
+  background-image: url('../../assets/button.png');
+}
+
+.nftSelectBtn {
+  border: none;
+  background-color: transparent;
+}
+
+.depositBtn:hover {
+  font-size: 22px;
+  transition: 0.5s;
+  color: white;
+}
+
+.btn-connect:hover {
+  font-size: 22px;
+  transition: 0.5s;
+  color: white;
+}
+
+
+.withdrawBtn:hover {
+  font-size: 22px;
+  transition: 0.5s;
+  color: white;
+}
+
+@media (max-width: 1380px) {
+  .stakingBtn>a {
+    padding: 10px;
+    font-size: 13px;
+
+  }
+}
+
+@media (max-width: 380px) {
+  .about-row {
+    padding: 0px !important;
+  }
+
+  .top-title>img {
+    width: 300px;
+  }
+
+  .top-title {
+    text-align: left;
+    padding-left: 25px;
+  }
+}
+
+@media (max-width: 420px) {
+  .top-title>img {
+    width: 340px;
+  }
+
+  .top-title {
+    text-align: left;
+    padding-left: 25px;
+  }
+}
+
+@media (max-width: 380px) {
+  .top-title>img {
+    width: 300px;
+  }
+
+  .top-title {
+    text-align: left;
+    padding-left: 25px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .top-title>img {
+    width: 340px;
+  }
+
+  .top-title {
+    text-align: left;
+    padding-left: 25px;
+  }
+}

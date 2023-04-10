@@ -1,0 +1,114 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
+
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+
+interface IERC20 {
+    function burn(uint256 amount) external;
+    function balanceOf(address user) external view returns (uint256);
+    function transferFrom(address from, address to, uint256 amount) external;
+}
+
+contract breeding is Ownable {
+    using SafeMath for uint256;
+
+    IERC721 public DoodleNFT;
+    IERC20 public BunnyToken;
+
+    uint256 public burnPrice = 100;
+    uint256 public stakedTimeLine = 10 seconds;
+    
+    address public ownerAddress = 0x999e43cCcd16e353ae5Be06ae5C80310676E1856;
+
+    struct BreedingInfo{
+        address owner;
+        uint256 doodleMaleID;
+        uint256 doodleFemaleID;
+        uint256 stakedTime;
+        bool breedAllow;
+    }
+    
+    BreedingInfo[] public breedingInfos;
+
+    constructor(address bunnyToken, address doodleBunny) {
+        BunnyToken = IERC20(bunnyToken);
+        DoodleNFT = IERC721(doodleBunny);
+    }
+
+    function breed(uint256 doodleMaleID, uint256 doodleFemaleID) public {
+        breedingInfos.push(
+            BreedingInfo({
+                owner: msg.sender,
+                doodleMaleID: doodleMaleID,
+                doodleFemaleID: doodleFemaleID,
+                stakedTime: block.timestamp,
+                breedAllow : true
+            })
+        );
+        BunnyToken.transferFrom(msg.sender, address(this), burnPrice);
+        BunnyToken.burn(burnPrice);
+
+        DoodleNFT.transferFrom(msg.sender, address(this), doodleMaleID);
+        DoodleNFT.transferFrom(msg.sender, address(this), doodleFemaleID);
+    }
+
+    function withdraw(uint256 doodleMaleID, uint256 doodleFemaleID) public {
+        uint256 len = breedingInfos.length;
+        uint256 index = 0;
+
+        for(uint256 i=0; i < len; i++){
+            if(
+                breedingInfos[i].owner == msg.sender &&
+                breedingInfos[i].doodleMaleID == doodleMaleID &&
+                breedingInfos[i].doodleFemaleID == doodleFemaleID
+            ){
+                breedingInfos[i].breedAllow = false;
+                index = i;
+                break;
+            }
+        }
+
+        require(breedingInfos[index].stakedTime + stakedTimeLine <= block.timestamp, "Timeline is not finished!");
+
+        DoodleNFT.transferFrom(address(this), msg.sender, breedingInfos[index].doodleMaleID);
+        DoodleNFT.transferFrom(address(this), msg.sender, breedingInfos[index].doodleFemaleID);
+    }
+
+    function emergencyWithdraw() public onlyOwner {
+        uint256 len = breedingInfos.length;
+
+        for(uint256 i=0; i < len; i++){
+            if(breedingInfos[i].owner != address(0x0) && breedingInfos[i].breedAllow == true){
+                DoodleNFT.transferFrom(address(this), breedingInfos[i].owner, breedingInfos[i].doodleMaleID);
+                DoodleNFT.transferFrom(address(this), breedingInfos[i].owner, breedingInfos[i].doodleFemaleID);
+            }
+        }
+
+    }
+
+    function getbreedingInfos() public view returns(BreedingInfo[] memory){
+        return breedingInfos;
+    }
+
+    function setTimeline(uint256 _timeline) public onlyOwner {
+        stakedTimeLine = _timeline;
+    }
+
+    function setBurnPrice(uint256 _price) public onlyOwner {
+        burnPrice = _price;
+    }
+
+    function setBunnyToken(address addr) public onlyOwner {
+        BunnyToken = IERC20(addr);
+    }
+
+    function setOwnerAddress(address addr) public onlyOwner {
+        ownerAddress = addr;
+    }
+
+    function setDoodleBunnyAddress(address addr) public onlyOwner {
+        DoodleNFT = IERC721(addr);
+    }
+}
