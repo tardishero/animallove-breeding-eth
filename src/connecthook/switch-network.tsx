@@ -16,7 +16,7 @@ const addNetworkRequest = () =>
         nativeCurrency: {
           name: "C2FLR",
           symbol: "C2FLR",
-          decimals: 16,
+          decimals: 18,
         },
       },
     ],

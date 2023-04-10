@@ -295,15 +295,36 @@ const Home: NextPage = () => {
   // };
 
   return (
-    <main className="flex flex-col items-center justify-center w-full min-h-screen">
-      <img
+    <main className="container flex flex-col items-center justify-center w-full min-h-screen lg:px-[100px] md:px-[30px] px-5">
+      {/* <img
         src="/img/homeBackground.png"
-        className="fixed object-cover w-full h-full"
-      />
-      <div className="z-50 text-3xl font-bold text-white">sdfsdfsd</div>
-      <p className="z-50 text-3xl font-normal text-white">
-        sdfsdfsd fssdfsdfs dfsdfs dfsdfwerwfgxb sdhbfdzgdfsd
-      </p>
+        className="fixed top-0 left-0 object-cover w-full h-full -z-10"
+      /> */}
+      <div className="relative z-50 min-h-[80vh] bg-white bg-opacity-10 backdrop-blur-sm mt-[100px] w-full rounded-lg my-10">
+        <img
+          src="/img/banner.png"
+          className="object-cover object-center w-full rounded-t-lg md:h-[300px] h-[200px]"
+        />
+        <div className="flex items-center justify-center w-full -mt-10">
+          <img
+            src="/img/dogAvatar.png"
+            className="w-[80px] h-[80px] object-cover rounded-full"
+          />
+        </div>
+        <div className="grid w-full gap-5 px-10 mt-5 md:grid-cols-2">
+          <div className="border-gray-400 p-5 border-[1px] rounded-md min-h-[45vh]">
+            <p className="text-3xl font-bold text-center text-white">Male</p>
+          </div>
+          <div className="border-gray-400 p-5 border-[1px] rounded-md min-h-[45vh]">
+            <p className="text-3xl font-bold text-center text-white">Female</p>
+          </div>
+        </div>
+        <div className="flex items-center justify-center w-full my-7">
+          <button className="px-4 py-2 font-bold text-black transition-all duration-300 bg-white rounded-md hover:bg-gray-300">
+            Start Breeding
+          </button>
+        </div>
+      </div>
     </main>
   );
 };
