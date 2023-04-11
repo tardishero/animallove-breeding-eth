@@ -28,9 +28,11 @@ html {
   background-size: cover !important;
   background-position: center;
   position: relative;
-  z-index: 1000;
   display: flex !important;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+.bg-black {
+  background-color: black !important;
 }

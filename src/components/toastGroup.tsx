@@ -27,6 +27,7 @@ export const errorAlertCenter = (text: string) => {
 
 export const warningAlert = (text: string) => {
   toast.warning(text, {
+    className: "bg-black",
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,

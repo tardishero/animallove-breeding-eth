@@ -53,7 +53,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="w-full h-[80px] flex justify-between lg:px-[100px] md:px-[40px] fixed z-[9999] py-3 items-center px-4">
+    <header className="w-full h-[80px] flex justify-between lg:px-[100px] md:px-[40px] fixed z-[49] py-3 items-center px-4">
       <Head>
         <link rel="icon" href="/img/logo.png" />
       </Head>
